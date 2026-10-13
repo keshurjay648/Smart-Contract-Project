@@ -1,0 +1,29 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache and tests
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Node.js dependencies
+node_modules/
+
+# Generated temporary files
+*.tmp
+*.log
+
+# Generated verification artifacts
+reports/verified/
+reports/verification_test/
+
+# Solidity compiler artifacts
+*.abi
+*.bin
