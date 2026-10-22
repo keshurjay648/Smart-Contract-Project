@@ -1,0 +1,11 @@
+.app-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-area {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-primary);
+}

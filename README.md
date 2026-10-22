@@ -77,14 +77,10 @@ Install the following before running the project:
 
 ## Setup
 
-### 1. Clone the repository
 
-```bash
-git clone https://github.com/YOUR-USERNAME/Smart-Contract-Project.git
-cd Smart-Contract-Project
-```
 
-Replace `YOUR-USERNAME` with the GitHub account that owns the repository.
+
+
 
 ### 2. Create and activate a Python virtual environment
 
@@ -131,10 +127,16 @@ The verifier invokes the Solidity compiler through `npx`. An internet connection
 ## Run the Dashboard
 
 From the project root, with the Python virtual environment activated:
+ 
+ backend
+ cd "D:\universal\smart contract\Smart-Contract-Project"
+.venv\Scripts\activate
+python api.py
 
-```bash
-streamlit run app.py
-```
+frontend
+cd "D:\universal\smart contract\Smart-Contract-Project\frontend"
+npm run dev
+
 
 Open the local URL printed in the terminal, usually:
 

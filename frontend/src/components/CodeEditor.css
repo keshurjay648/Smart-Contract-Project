@@ -1,0 +1,120 @@
+/* ── Outer wrapper ───────────────────────────────────────────────────────── */
+.ce-outer {
+  display: flex;
+  position: relative;
+  background: #0a0c1e;
+  height: 100%;          /* fills whatever the parent gives it          */
+  min-height: 0;         /* let flex children shrink below content size */
+  overflow: hidden;      /* clip — children scroll internally           */
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ── Line-number gutter ──────────────────────────────────────────────────── */
+.ce-gutter {
+  flex-shrink: 0;
+  width: 42px;
+  overflow: hidden;      /* never show its own scrollbar                */
+  padding: 12px 0;
+  border-right: 1px solid rgba(99,102,241,0.12);
+  background: #0a0c1e;
+  z-index: 2;
+  /* pointer-events off so mouse-wheel bubbles to the code area */
+  pointer-events: none;
+}
+
+.ce-line-num {
+  display: block;
+  text-align: right;
+  padding: 0 8px;
+  font-size: 11px;
+  color: #3d4663;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+
+/* ── Scrollable code area ────────────────────────────────────────────────── */
+.ce-code-area {
+  flex: 1;
+  min-width: 0;          /* CRITICAL — prevents flex child from overflowing */
+  overflow-x: auto;      /* independent horizontal scroll                   */
+  overflow-y: auto;      /* independent vertical scroll                     */
+  position: relative;
+}
+
+/* ── Syntax-highlighted <pre> ────────────────────────────────────────────── */
+.ce-highlight {
+  margin: 0;
+  padding: 12px 16px 12px 14px;
+  color: #c9d1e9;
+  white-space: pre;      /* preserve indentation, no wrapping               */
+  word-wrap: normal;
+  overflow: visible;     /* let ce-code-area handle overflow                */
+  pointer-events: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  /* Make the pre wide enough to contain its content without wrapping */
+  display: inline-block;
+  min-width: 100%;
+}
+
+/* ── Transparent textarea (editable mode) ────────────────────────────────── */
+.ce-textarea {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  padding: 12px 16px 12px 14px;
+  background: transparent;
+  color: transparent;
+  caret-color: #c9d1e9;
+  border: none;
+  outline: none;
+  resize: none;
+  white-space: pre;
+  word-wrap: normal;
+  overflow: hidden;      /* scroll driven by ce-code-area                   */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  z-index: 1;
+}
+
+/* ── Copy button ─────────────────────────────────────────────────────────── */
+.ce-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 10;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(13,17,40,0.85);
+  border: 1px solid rgba(99,102,241,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s;
+  backdrop-filter: blur(4px);
+}
+.ce-copy-btn:hover { color: #e2e8f0; border-color: rgba(99,102,241,0.55); }
+
+/* ── Scrollbar cosmetics ─────────────────────────────────────────────────── */
+.ce-code-area::-webkit-scrollbar        { width: 6px; height: 6px; }
+.ce-code-area::-webkit-scrollbar-track  { background: #0a0c1e; }
+.ce-code-area::-webkit-scrollbar-thumb  { background: rgba(99,102,241,0.3); border-radius: 3px; }
+.ce-code-area::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.6); }
+.ce-code-area::-webkit-scrollbar-corner { background: #0a0c1e; }
+
+/* ── Syntax colours ──────────────────────────────────────────────────────── */
+.syn-keyword  { color: #7c6af7; font-weight: 500; }
+.syn-string   { color: #7ec9a4; }
+.syn-number   { color: #f08d49; }
+.syn-comment  { color: #4a5568; font-style: italic; }
+.syn-function { color: #61afef; }
